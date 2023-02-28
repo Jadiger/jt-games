@@ -44,7 +44,7 @@ console.log(page);
                     popularGames.length>0 ?
                     (
                         popularGames.map(item=> {
-                            return <Card item={item} key={item.id}/>
+                            return <Card item={item} key={item.id} category={`popular`}/>
                         })
                     )
                      : ''
