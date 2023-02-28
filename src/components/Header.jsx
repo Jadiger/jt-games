@@ -7,7 +7,7 @@ function Header() {
     const pathName = window.document.location.pathname
     const [toTopDisplay,setToTopDisPlay]= useState('none')
     window.addEventListener('scroll',()=> {
-        if (pageYOffset + window.innerHeight > window.innerHeight) {
+        if (pageYOffset + window.innerHeight > window.innerHeight + 50) {
             setToTopDisPlay('block')
         } else {
             setToTopDisPlay('none')
