@@ -6,6 +6,7 @@ import toTopIcon from '../assets/icons/totop.png'
 function Header() {
     const pathName = window.document.location.pathname
     const [toTopDisplay,setToTopDisPlay]= useState('none')
+    const [navActive,setNavActive] = useState(false)
     window.addEventListener('scroll',()=> {
         if (pageYOffset + window.innerHeight > window.innerHeight + 50) {
             setToTopDisPlay('block')
@@ -14,22 +15,27 @@ function Header() {
         }
     })
     function toTop() {
-        window.scrollTo({
-            top: 0,
-            left: 0,
-            behavior: 'smooth'
-        });
+        
       console.log(window.scroll);
     }
     useEffect(()=> {
-        toTop()
+        window.scrollTo(0,0)
     },[window.document.location.pathname])
   return (
     <>
     <header>
+        <div className={`nav_show ${navActive? 'nav_show_active': ''}`}
+            onClick={()=> {
+                setNavActive(!navActive)
+            }}
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <div className='logo'>
                 <img src={logoSite}/>
-            </div>
+        </div>
         <div className='header_details'>Details</div>
         <span className='to_top' style={{display: toTopDisplay}}>
             <img src={toTopIcon} onClick={
@@ -39,7 +45,7 @@ function Header() {
             }/>
         </span>
     </header>
-    <nav>
+    <nav className={`${navActive ? 'navbar_active': ''}`}>
             <ul className='nav_links'>
                 <li className='nav_link'>
                 <NavLink to='/'>

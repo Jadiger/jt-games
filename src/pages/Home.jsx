@@ -1,18 +1,20 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { APIKEY } from '../api'
 import { http } from '../api'
 import Card from '../components/Card'
+import HomeCard from '../components/HomeCard'
 import Skleton from '../components/Skleton'
 function Home() {
-    const [games,setGames] = useState([])
+    const [popularGames,setPopularGames] = useState([])
     const [skleton,setSkleton] = useState(true)
     const ApiKey = useContext(APIKEY)
-    console.log(games);
+    // console.log(games);
 
     async function getGames() {
         await http.get(`/games?key=${ApiKey}&page_size=10`)
         .then(res=> {
-            setGames(res.data.results)
+            setPopularGames(res.data.results)
             setSkleton(false)
         })
         .catch(err=> {
@@ -23,26 +25,28 @@ function Home() {
         getGames()
     },[])
   return (
-        <div className='cards'>
-            <div className='cards_title'>
-                All Games
-            </div>
-            {
-                skleton? <Skleton/> : (
-                    <div className='cards_list'>
-                {
-                    games.length>0 ?
-                    (
-                        games.map(item=> {
-                            return <Card item={item} key={item.id} category='home'/>
-                        })
-                    )
+    <div className='container'>
+         <div className='cards'>
+             <div className='home_cards_title'>
+                 <Link to='/popular'>Popular Games</Link>
+             </div>
+             {
+                 skleton? <Skleton/> : (
+                     <div className='home_cards_list'>
+                 {
+                     popularGames.length>0 ?
+                     (
+                         popularGames.map(item=> {
+                             return <HomeCard item={item} key={item.id} category='popular'/>
+                         })
+                     )
                      : ''
-                }
-            </div>
-                )
-            }
-        </div>
+                 }
+             </div>
+                 )
+             }
+         </div>
+    </div>
   )
 }
 

@@ -1,0 +1,491 @@
+@use './ligth/variables' as *;
+@use './ligth/basic' as *;
+
+
+header {
+    width: 100%;
+    height: $header-height;
+    padding: 0 45px;
+    background: $body-background;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.214);
+
+    & .logo {
+        height: 100%;
+        padding: 15px 0;
+
+        & img {
+            height: 100%;
+        }
+    }
+
+}
+.nav_show {
+    display: none;
+}
+.dark {
+    & nav {
+        background-color : red;
+    }
+}
+nav {
+    width: $nav-width;
+    background: $card-background;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: calc(100vh - $header-height);
+    padding: 40px 25px 15px;
+    z-index: 10;
+    transition: .3s;
+
+    & .nav_links {
+        list-style: none;
+        padding: 0 10px;
+
+        & .nav_link {
+
+            width: 100%;
+
+            margin: 15px 0;
+
+            & i {
+                font-size: 18px;
+                margin-right: 15px;
+            }
+
+            & a {
+                padding: 12.5px 15px;
+                font-size: 16px;
+                box-shadow: 0 0 4px rgba(0, 0, 0, 0.45);
+                line-height: 16px;
+                display: flex;
+                align-items: center;
+                color: $body-color;
+                border-radius: 10px;
+                text-decoration: none;
+
+            }
+
+            & .active {
+                position: relative;
+                color: #fff;
+                background-color: $secondary-color;
+
+                &::after {
+                    content: '';
+                    position: absolute;
+                    height: 100%;
+                    width: 4px;
+                    top: 0;
+                    left: -35px;
+                    background-color: $secondary-color;
+                }
+            }
+        }
+    }
+
+    .user {
+        position: absolute;
+        width: 100%;
+        left: 0;
+        bottom: 15px;
+        padding: 0 35px;
+
+        &_info {
+            font-weight: 500;
+            padding: 12.5px 15px;
+            display: flex;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.45);
+            font-size: 15px;
+            line-height: 15px;
+            position: relative;
+
+            & i {
+                font-size: 18px;
+                line-height: 18px;
+                margin-right: 15px;
+            }
+
+            &_edit i {
+                position: absolute;
+                font-size: 14px;
+                line-height: 14px;
+                right: 0px;
+                top: 50%;
+                transform: translate(0, -50%);
+                cursor: pointer;
+            }
+        }
+    }
+}
+.container {
+    width: calc(100% - $nav-width);
+    margin-left: $nav-width;
+    padding: 20px;
+    padding-top: calc($header-height + 20px);
+    padding-bottom: 0;
+}
+.cards {
+    width: 100%;
+
+    &_title {
+        width: 100%;
+        font-size: 40px;
+        font-weight: 600;
+        text-align: center;
+        padding: 25px;
+    }
+
+    &_list {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        padding: 20px;
+        grid-gap: 20px;
+
+        &_item {
+            border-radius: 10px;
+            height: 300px;
+            background-color: $card-background;
+            box-shadow: 0 0 4px rgba(0, 0, 0, 0.45);
+            position: relative;
+            overflow: hidden;
+
+            & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            &_info {
+                padding: 15px;
+                width: 100%;
+                height: 100px;
+                background-color: rgba(0, 0, 0, 0.678);
+                color: #fff;
+                position: absolute;
+                left: 0;
+                bottom: 0;
+
+                // overflow: hidden;
+                &_details {
+                    display: flex;
+                    padding: 5px 0;
+                    display: flex;
+                    justify-content: flex-end;
+
+                    & .rating {
+                        font-weight: 500;
+                        font-size: 14px;
+                        line-height: 14px;
+                        width: 35px;
+                        height: 35px;
+                        border-radius: 50%;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        border: 3px solid;
+                    }
+                }
+
+                & h2 a {
+                    font-size: 16px;
+                    height: 20px;
+                    line-height: 40px;
+                    overflow: hidden;
+                    color: #fff;
+                    text-decoration: none;
+                    font-weight: 500;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+.dark {
+    .cards_list_item {
+        background-color:red;
+    }
+}
+.home_cards_title {
+    font-size: 25px;
+    font-weight: 500;
+    margin: 10px 20px;
+
+    & a {
+        text-decoration: none;
+        color: $body-color;
+    }
+}
+
+.home_cards_list {
+    width: 100%;
+    display: flex;
+    overflow: auto;
+
+    & .home_card {
+        flex: none;
+        width: 200px;
+        margin: 10px;
+    }
+}
+
+.platforms {
+    width: 100%;
+    
+
+    &_title {
+        width: 100%;
+        font-size: 40px;
+        font-weight: 600;
+        text-align: center;
+        padding: 25px;
+    }
+
+    &_list {
+        padding: 20px;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-gap: 20px;
+
+        & .platform {
+            height: 300px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+
+            & img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            &_content {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                position: absolute;
+                top: 0;
+                left: 0;
+                background-color: rgba(0, 0, 0, 0.711);
+                color: #fff;
+
+                & h2 {
+                    font-size: 18px;
+                    padding: 10px 15px;
+                    background-color: rgba(255, 255, 255, 0.195);
+                    transition: .3s;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: #fff;
+                        color: #000;
+                    }
+                }
+
+                & h4 {
+                    margin-top: 25px;
+                    font-size: 16px;
+                    font-weight: 500;
+                }
+
+                & p {
+                    width: 80%;
+                    margin: 5px auto;
+                    text-align: center;
+                    background-color: rgba(23, 22, 22, 0.1);
+                    border: 1px solid rgba(255, 255, 255, 0.174);
+                    height: 20px;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
+                    // margin: ;
+                }
+
+                & p a {
+                    font-size: 13px;
+                    line-height: 18px;
+                    height: 18px;
+                    overflow: hidden;
+                    padding: 0;
+                    color: rgba(255, 255, 255, 0.749);
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.single_game {
+    width: 100%;
+    // padding: 20px;
+
+    &_img {
+        width: 50%;
+        // height: 50vh;
+
+        & img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.genres {
+    width: 100%;
+    font-size: 70px;
+}
+
+.skleton {
+    background: rgba(128, 128, 128, 0.277);
+    animation: skleton_anime 1.5s linear infinite;
+}
+
+.to_top {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+
+    & img {
+        width: 100%;
+        height: 100%;
+    }
+}
+
+@keyframes skleton_anime {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.loader {
+    width: 100px;
+    height: 80px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &_content {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        border: 10px solid #fff;
+        border-top: 10px solid #000;
+        animation: loader 1.5s linear infinite;
+    }
+}
+
+@keyframes loader {
+    0% {
+        transform: rotate(0);
+    }
+
+    100% {
+        rotate: (360deg);
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .cards_list {
+            grid-template-columns: repeat(3,1fr);
+            padding: 20px 30px;
+        }
+}
+@media screen and (max-width : 968px) {
+    header {
+        padding: 0 35px;
+    }
+    .logo {
+        transform: translateX(40px);
+    }
+    nav {
+        transform: translateX(-100%);
+    }
+    .navbar_active {
+        transform: translateX(0);
+    }
+    .nav_show {
+        width: 25px;
+        height: 15px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 25px;
+        & {
+            span {
+                display: block;
+                width: 100%;
+                height: 2px;
+                background: black;
+                transition: .2s;
+            }
+        }
+        
+    }
+    .nav_show_active {
+        justify-content: center;
+        & span:nth-child(1){
+            transform-origin: center;
+            transform: translateY(50%) rotate(45deg);
+        }
+        & span:nth-child(2) {
+            display: none;
+        }
+        & span:nth-child(3) {
+            transform-origin: center;
+            transform: translateY(-50%) rotate(-45deg);
+        }
+    }
+    .single_game_img {
+        width: 100%;
+    }
+    .container {
+        width: 100%;
+        margin-left: 0;
+    }
+}
+@media screen and (max-width : 768px) {
+    header {
+            padding: 0 25px;
+    }
+    .cards_list {
+        grid-template-columns: repeat(2,1fr);
+        padding: 20px 30px;
+    }
+}
+@media screen and (max-width : 576px) {
+   
+    .cards_list {
+        grid-template-columns: 1fr;
+        padding: 20px 30px;
+    }
+}

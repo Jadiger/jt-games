@@ -7,12 +7,13 @@ import Skleton from '../components/Skleton'
 import NewGames from './NewGames'
 function Popular() {
 const [popularGames,setPopularGames] = useState([])
+console.log(popularGames);
 const [skleton,setSkleton] = useState(true)
 const [page,setPage] = useState(1)
 const ApiKey = useContext(APIKEY)
 
 async function getPopularGames(){
-    await http.get(`/games?key=${ApiKey}&ordering=-added&page_size=30&page=${page}`)
+    await http.get(`/games?key=${ApiKey}&ordering=-added&page_size=15&page=${page}`)
     .then(res=> {
         setPopularGames(popularGames.concat(res.data.results));
         setSkleton(false)
@@ -31,9 +32,10 @@ window.addEventListener('scroll',()=> {
 })
 // window.scrollTo(0,0)
 window.scrollTo()
-console.log(page);
+console.log(pageYOffset);
   return (
-    <div className='cards'>
+    <div className='container'>
+            <div className='cards'>
             <div className='cards_title'>
                 Popular Games
             </div>
@@ -53,7 +55,8 @@ console.log(page);
                 )
             }
             <Loader/>
-        </div>
+    </div>
+    </div>
   )
 }
 

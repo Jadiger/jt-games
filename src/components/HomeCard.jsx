@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-function Card({item,category}) {
+function HomeCard({item,category}) {
   return (
-    <div className='cards_list_item'>
+    <div className='cards_list_item home_card'>
             <img src={item.short_screenshots.length > 0 ? item.short_screenshots[0].image : 'https://marketplace.canva.com/EAE- f1yMKXE/1/0/1600w/canva-purple-modern-neon-3d-joysticks-desktop-wallpaper-so4SpOlX42M.jpg'}/>
         <div className='cards_list_item_info'>
             <div className='cards_list_item_info_details'>
@@ -23,4 +23,4 @@ function Card({item,category}) {
   )
 }
 
-export default Card
+export default HomeCard

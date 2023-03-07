@@ -1,11 +1,11 @@
 import { useState } from 'react'
-import './App.scss'
+import './styles/sass/light.scss'
 import Routing from './components/Routing'
 
 function App() {
 
   return (
-    <div className="App">
+    <div className="App ">
         <Routing/>
     </div>
   )

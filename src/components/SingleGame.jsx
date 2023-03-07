@@ -27,13 +27,15 @@ function SingleGame() {
       getGameInfo()
     },[])
   return (
-    <div className='single_game'>
+    <div className="container">
+            <div className='single_game'>
         <div className='single_game_img'>
            <img src={game.background_image}/>
         </div>
         <div className='single_game_info' ref={gameInfo}>
             
         </div>
+    </div>
     </div>
   )
 }

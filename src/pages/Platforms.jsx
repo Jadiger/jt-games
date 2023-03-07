@@ -30,37 +30,39 @@ useEffect(()=> {
     getPlatform()
 },[])
   return (
-    <div className='platforms'>
-        <div className='platforms_title'>Platforms</div>
-        <div className='platforms_list'>
-        
-        {
-            platforms.length > 0 ? (
-                platforms.map((item)=> {
-                    return (
-                        <div className='platform' key={item.id}>
-                            <img src={item.image_background}/>
-                            <div className="platform_content">
-                                <h2>{item.name}</h2>
-                                <h4>Popular items</h4>
-                                {item.games.splice(0,3).map(
-                                    game=> {
-                                        return (
-                                            <p>
-                                                <Link to={`/${item.slug}/${game.slug}`}>{game.name}</Link>
-                                            </p>
-                                        )
-                                    }
-                                )}
-                            </div>
-                        </div>
-                    )
-                }) 
-
+    <div className="container">
+            <div className='platforms'>
+                <div className='platforms_title'>Platforms</div>
+                <div className='platforms_list'>
                 
-            ) : ''
-        }
-    </div>
+                {
+                    platforms.length > 0 ? (
+                        platforms.map((item)=> {
+                            return (
+                                <div className='platform' key={item.id}>
+                                    <img src={item.image_background}/>
+                                    <div className="platform_content">
+                                        <h2>{item.name}</h2>
+                                        <h4>Popular items</h4>
+                                        {item.games.splice(0,3).map(
+                                            game=> {
+                                                return (
+                                                    <p>
+                                                        <Link to={`/${item.slug}/${game.slug}`}>{game.name}</Link>
+                                                    </p>
+                                                )
+                                            }
+                                        )}
+                                    </div>
+                                </div>
+                            )
+                        }) 
+
+                        
+                    ) : ''
+                }
+            </div>
+        </div>
     </div>
   )
     }

@@ -1,0 +1,17 @@
+$body-background : #F5F5FC;
+$body-color : #29275F;
+$secondary-color : #5E81F5;
+$border-color : #5e5e65;
+$header-height: 80px;
+$nav-width : 270px;
+$card-background: #fff;
+
+.dark {
+        $body-background : #080808;
+        $body-color : #9b9887;
+        $secondary-color : #5E81F5;
+        $border-color : #5e5e65;
+        $header-height: 80px;
+        $nav-width : 270px;
+        $card-background: rgb(223, 28, 28);
+}
